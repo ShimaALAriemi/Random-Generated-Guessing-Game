@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Generated Guessing Game</title>
+    <link rel="stylesheet" href="/assesst/css/index.css">
+
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace;
+}
+
+body{
+    background-image: url("https://cdn.pixabay.com/photo/2021/02/16/18/55/gamer-6022003_1280.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.con-cen{
+    display: flex;
+    justify-content: center; /* y axic*/
+    align-items: center; /* x axic*/
+    flex-direction: column;
+    
+}
+
+.sec-cen{
+    margin-top: 60px;
+}
+
+#guess{
+    margin-right: 30px;
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px rgb(198, 131, 215, 0.25);
+    font-weight: 700;
+    color: #11009E;
+}
+
+#passGuess{
+    padding: 12px 28px;
+    box-sizing: border-box;
+  
+    border-radius: 10px;
+    border: none;
+  
+    box-shadow: 0px 5px 15px rgb(198, 131, 215, 0.25);
+    background: #11009E;
+    color: #fff;
+  
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#guessIs{
+    margin-top: 30px;
+    display: flex;
+    width: 200px;
+    color: #da0c0c;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+
+<div class="con-cen">
+
+    <div class="sec-cen">
+    <input type="text" id="guess" placeholder="Guess A Number between 1 ... 100:">
+    <button  id="passGuess">Guess</button>
+    </div>
+
+<h3 id="guessIs"></h3>
+</div>
+<script>
+
+let input = document.getElementById("guess");
+let button = document.getElementById("passGuess");
+let lable = document.getElementById("guessIs");
+    let rand = Math.floor((Math.random() * 100) + 1);
+//console.log(rand);
+
+function checkGuess(value){
+if(value == rand) return rand+" You win";
+else if(value > rand-5 && value < rand+5 ) {
+    if(value < rand+5){
+        return "little higher";
+    }else{
+        return "little lower";
+    }
+}
+/*
+else if(value > rand-10 && value < rand+10 ) {
+    if(value < rand+10){
+        return " close\thigher";
+    }else{
+        return " close\tlower";
+    } 
+}
+*/
+else if(value > rand){return " high";}
+else{return " low";}
+}
+
+button.addEventListener("click", () =>{
+    let value = checkGuess(guess.value);
+    if(value == rand+" You win"){
+        lable.style.color = 'green';
+        lable.textContent = value ;
+    }
+    else{
+        lable.textContent = value ;
+    }
+        
+});
+
+</script>
+    <!-- <script src="/assesst/js/index.js"></script> -->
+</body>
+</html>
